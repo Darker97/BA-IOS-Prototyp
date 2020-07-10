@@ -13,6 +13,13 @@
 		AAD33D4F24B71BB500739A95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD33D4E24B71BB500739A95 /* Preview Assets.xcassets */; };
 		AAD33D5A24B71BB500739A95 /* BA_PrototypTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D5924B71BB500739A95 /* BA_PrototypTests.swift */; };
 		AAD33D6524B71BB500739A95 /* BA_PrototypUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D6424B71BB500739A95 /* BA_PrototypUITests.swift */; };
+		AAD33D7424B8423000739A95 /* 1-Document_Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7324B8423000739A95 /* 1-Document_Detection.swift */; };
+		AAD33D7624B8424900739A95 /* 2-Yolo1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7524B8424900739A95 /* 2-Yolo1.swift */; };
+		AAD33D7824B8425C00739A95 /* 3-Tesseract1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7724B8425C00739A95 /* 3-Tesseract1.swift */; };
+		AAD33D7A24B8426900739A95 /* 4-Tesseract2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7924B8426900739A95 /* 4-Tesseract2.swift */; };
+		AAD33D7C24B8427B00739A95 /* 5-Logic1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7B24B8427B00739A95 /* 5-Logic1.swift */; };
+		AAD33D7E24B8428A00739A95 /* 6-Tensor1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7D24B8428A00739A95 /* 6-Tensor1.swift */; };
+		AAD33D8024B842A600739A95 /* 0-Log Funktionen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D7F24B842A600739A95 /* 0-Log Funktionen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,13 @@
 		AAD33D6024B71BB500739A95 /* BA-PrototypUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BA-PrototypUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD33D6424B71BB500739A95 /* BA_PrototypUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA_PrototypUITests.swift; sourceTree = "<group>"; };
 		AAD33D6624B71BB500739A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD33D7324B8423000739A95 /* 1-Document_Detection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1-Document_Detection.swift"; sourceTree = "<group>"; };
+		AAD33D7524B8424900739A95 /* 2-Yolo1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2-Yolo1.swift"; sourceTree = "<group>"; };
+		AAD33D7724B8425C00739A95 /* 3-Tesseract1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3-Tesseract1.swift"; sourceTree = "<group>"; };
+		AAD33D7924B8426900739A95 /* 4-Tesseract2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "4-Tesseract2.swift"; sourceTree = "<group>"; };
+		AAD33D7B24B8427B00739A95 /* 5-Logic1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "5-Logic1.swift"; sourceTree = "<group>"; };
+		AAD33D7D24B8428A00739A95 /* 6-Tensor1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "6-Tensor1.swift"; sourceTree = "<group>"; };
+		AAD33D7F24B842A600739A95 /* 0-Log Funktionen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-Log Funktionen.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,7 @@
 				AAD33D4924B71BB200739A95 /* ContentView.swift */,
 				AAD33D4B24B71BB500739A95 /* Assets.xcassets */,
 				AAD33D5024B71BB500739A95 /* Info.plist */,
+				AAD33D7224B841F600739A95 /* Funktionen */,
 				AAD33D4D24B71BB500739A95 /* Preview Content */,
 			);
 			path = "BA-Prototyp";
@@ -128,6 +143,20 @@
 				AAD33D6624B71BB500739A95 /* Info.plist */,
 			);
 			path = "BA-PrototypUITests";
+			sourceTree = "<group>";
+		};
+		AAD33D7224B841F600739A95 /* Funktionen */ = {
+			isa = PBXGroup;
+			children = (
+				AAD33D7F24B842A600739A95 /* 0-Log Funktionen.swift */,
+				AAD33D7324B8423000739A95 /* 1-Document_Detection.swift */,
+				AAD33D7524B8424900739A95 /* 2-Yolo1.swift */,
+				AAD33D7724B8425C00739A95 /* 3-Tesseract1.swift */,
+				AAD33D7924B8426900739A95 /* 4-Tesseract2.swift */,
+				AAD33D7B24B8427B00739A95 /* 5-Logic1.swift */,
+				AAD33D7D24B8428A00739A95 /* 6-Tensor1.swift */,
+			);
+			path = Funktionen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +288,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD33D7C24B8427B00739A95 /* 5-Logic1.swift in Sources */,
+				AAD33D7E24B8428A00739A95 /* 6-Tensor1.swift in Sources */,
+				AAD33D7424B8423000739A95 /* 1-Document_Detection.swift in Sources */,
+				AAD33D7A24B8426900739A95 /* 4-Tesseract2.swift in Sources */,
+				AAD33D7824B8425C00739A95 /* 3-Tesseract1.swift in Sources */,
+				AAD33D8024B842A600739A95 /* 0-Log Funktionen.swift in Sources */,
 				AAD33D4A24B71BB200739A95 /* ContentView.swift in Sources */,
 				AAD33D4824B71BB200739A95 /* BA_PrototypApp.swift in Sources */,
+				AAD33D7624B8424900739A95 /* 2-Yolo1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
