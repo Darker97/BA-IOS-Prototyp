@@ -1,0 +1,5 @@
+target 'BA-Prototyp' do 
+	use_frameworks!
+
+	pod 'Fusuma'
+end
