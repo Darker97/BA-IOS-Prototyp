@@ -15,22 +15,25 @@ import Vision
     Output:     Koordinaten Object (x,y,w,h)
  */
 
-func FindWords(image: UIImage){
-    var text: String
+func FindWords(image: UIImage) -> [String]{
+    var Ziel_text: [String] = []
     
     let requestHandler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
           let request = VNRecognizeTextRequest { (request, error) in
           guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
           for currentObservation in observations {
-            let topCandidate = currentObservation.topCandidates(1)
-            text = topCandidate.first!.string
-                  
+            let topCandidate = currentObservation.topCandidates(1000)
+            for i in topCandidate{
+                Ziel_text.append(i.string)
+            }
           }
       }
           
     request.recognitionLevel = .accurate
     request.usesLanguageCorrection = true
     try? requestHandler.perform([request])
+    
+    return Ziel_text
 }
 
 
