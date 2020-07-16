@@ -16,6 +16,10 @@ import SwiftUI
 
 // AUSGELAGERT AN DIE API
 
+/*
+ 
+ // OLD
+ 
 func MachDokumentSchick(image: Image) -> Image{
     var NewImage = FindeDocument(image: image)
     NewImage = Aufbereitung(image: NewImage)
@@ -32,3 +36,4 @@ private func FindeDocument(image: Image) -> Image{
 private func Aufbereitung(image: Image) -> Image{
     return image
 }
+*/
