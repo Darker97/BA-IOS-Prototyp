@@ -15,8 +15,10 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     @Binding var isShown: Bool
     @Binding var image: Image?
+    @Binding var working:UIImage
     
-    init(isShown: Binding<Bool>, image: Binding<Image?>) {
+    init(isShown: Binding<Bool>, image: Binding<Image?>, working: Binding<UIImage>) {
+        _working = working
         _isShown = isShown
         _image = image
     }
@@ -24,6 +26,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        working = uiImage
         image = Image(uiImage: uiImage)
         isShown = false
         
@@ -39,13 +42,14 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     @Binding var isShown: Bool
     @Binding var image: Image?
+    @Binding var working: UIImage
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
         
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image)
+        return ImagePickerCoordinator(isShown: $isShown, image: $image, working: $working)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {

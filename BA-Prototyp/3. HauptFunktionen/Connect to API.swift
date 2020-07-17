@@ -7,13 +7,16 @@
 
 import Foundation
 import SwiftUI
+import Alamofire
 
-let link = ""
+let link = "http://192.168.178.34:5000"
 
 /// ping to Server
 /// - Input: /
 /// - Returns: String mit der Antwort
 func hi() -> Bool{
+    print("👀...............Ist der Server da????")
+    let sem = DispatchSemaphore.init(value: 0)
     var passt = false
     
     let zusatz = "/hi"
@@ -31,14 +34,19 @@ func hi() -> Bool{
     let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
       if (error != nil) {
         print(error)
+        exit(5)
+        sem.signal()
       } else {
         let httpResponse = response as? HTTPURLResponse
         passt = true
-        print(httpResponse)
+        //print(httpResponse)
+        sem.signal()
       }
     })
 
     dataTask.resume()
+    sem.wait()
+    print("✅...............Server ist da")
     return passt
 }
 
@@ -48,32 +56,44 @@ func hi() -> Bool{
  * Output:          JSON mit den Boxen und Labeln
 */
 
-func getBoxes(Image: UIImage) -> UIImage{
-    var antwort: UIImage? = nil
+func getBoxes(Image: UIImage) -> Data{
+    print("👀...............Sende Bild an KI")
+    var antwort: Data? = nil
+    let sem = DispatchSemaphore.init(value: 0)
     
     let zusatz = "/getBoxes"
-
-    let request = NSMutableURLRequest(url: NSURL(string: link + zusatz)! as URL,
-                                            cachePolicy: .useProtocolCachePolicy,
-                                        timeoutInterval: 10.0)
-    request.httpMethod = "POST"
-    request.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+    var Data = Image.pngData()!
     
-    var Data = Image.pngData()
+    let image = UIImage.init(named: "myImage")
 
-    let task = URLSession.shared.uploadTask(with: request as URLRequest, from: Data) { data, response, error in
-        if let error = error {
-            print ("error: \(error)")
-            return
+    //Parameter HERE
+    let parameters = [
+        "id": "429",
+        "docsFor" : "visitplan"
+    ]
+    //Header HERE
+    let headers:HTTPHeaders = [
+        "Content-type": "multipart/form-data",
+        "Content-Disposition" : "form-data"
+    ]
+    
+    let imgData = Image.jpegData(compressionQuality: 0.7)!
+    let url = (link+zusatz)
+    
+    AF.upload( multipartFormData: { multipartFormData in
+            //Parameter for Upload files
+            multipartFormData.append(imgData, withName: "file",fileName: "test.png" , mimeType: "image/png")
+            
+            for (key, value) in parameters
+            {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url, usingThreshold:UInt64.init(), method: .post, headers: headers)
+        .responseJSON { response in
+            antwort = response.data!
+            sem.signal()
         }
-        guard let response = response as? HTTPURLResponse,
-            (200...299).contains(response.statusCode) else {
-            print ("server error")
-            return
-        }
-        antwort = UIImage(data: data!)
-    }
-    task.resume()
+    sem.wait()
     return antwort!
 }
 
@@ -84,31 +104,42 @@ func getBoxes(Image: UIImage) -> UIImage{
 */
 
 func getPainted(Image: UIImage) -> UIImage{
-    var antwort: UIImage? = nil
+    print("👀...............Sende Bild an KI")
+    let sem = DispatchSemaphore.init(value: 0)
+    var antwort: UIImage? = UIImage()
     
-    let zusatz = "/getPainted"
+    let zusatz = "/getPainted/"
 
-    let request = NSMutableURLRequest(url: NSURL(string: link + zusatz)! as URL,
-                                            cachePolicy: .useProtocolCachePolicy,
-                                        timeoutInterval: 10.0)
-    request.httpMethod = "POST"
-    request.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+    //Parameter HERE
+    let parameters = [
+        "id": "429",
+        "docsFor" : "visitplan"
+    ]
+    //Header HERE
+    let headers:HTTPHeaders = [
+        "Content-type": "multipart/form-data",
+        "Content-Disposition" : "form-data"
+    ]
     
-    var Data = Image.pngData()
-
-    let task = URLSession.shared.uploadTask(with: request as URLRequest, from: Data) { data, response, error in
-        if let error = error {
-            print ("error: \(error)")
-            return
+    let imgData = Image.jpegData(compressionQuality: 0.7)!
+    let url = (link+zusatz)
+    
+    AF.upload( multipartFormData: { multipartFormData in
+            //Parameter for Upload files
+            multipartFormData.append(imgData, withName: "file",fileName: "test.png" , mimeType: "image/png")
+            
+            for (key, value) in parameters
+            {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url, usingThreshold:UInt64.init(), method: .post, headers: headers)
+        .responseJSON { response in
+            antwort = UIImage(data: response.data! as Data)
+            sem.signal()
         }
-        guard let response = response as? HTTPURLResponse,
-            (200...299).contains(response.statusCode) else {
-            print ("server error")
-            return
-        }
-        antwort = UIImage(data: data!)
-    }
-    task.resume()
+    
+    sem.wait()
+    print("✅...............fertiges Bild erhalten")
     return antwort!
 }
 
@@ -120,29 +151,41 @@ func getPainted(Image: UIImage) -> UIImage{
 */
 
 func getTable(Image: UIImage) -> UIImage{
-    var antwort: UIImage? = nil
-    let zusatz = "/getTable"
-
-    let request = NSMutableURLRequest(url: NSURL(string: link + zusatz)! as URL,
-                                            cachePolicy: .useProtocolCachePolicy,
-                                        timeoutInterval: 10.0)
-    request.httpMethod = "POST"
-    request.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+    print("👀...............Sende Bild an KI")
+    let sem2 = DispatchSemaphore.init(value: 0)
+    var antwort: UIImage? = UIImage()
     
-    var Data = Image.pngData()
+    let zusatz = "/getTable/"
 
-    let task = URLSession.shared.uploadTask(with: request as URLRequest, from: Data) { data, response, error in
-        if let error = error {
-            print ("error: \(error)")
-            return
+    //Parameter HERE
+    let parameters = [
+        "Warum?" : "TestApp"
+    ]
+    //Header HERE
+    let headers:HTTPHeaders = [
+        "Content-type": "multipart/form-data",
+        "Content-Disposition" : "form-data"
+    ]
+    
+    let imgData = Image.pngData()!
+    let url = (link+zusatz)
+    
+    AF.upload( multipartFormData: { multipartFormData in
+            //Parameter for Upload files
+            multipartFormData.append(imgData, withName: "file",fileName: "test.png" , mimeType: "image/png")
+            
+            for (key, value) in parameters
+            {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url, usingThreshold:UInt64.init(), method: .post, headers: headers)
+        .responseJSON { response in
+            let tempData = response.data!
+            antwort = UIImage(data: tempData)
+            sem2.signal()
         }
-        guard let response = response as? HTTPURLResponse,
-            (200...299).contains(response.statusCode) else {
-            print ("server error")
-            return
-        }
-        antwort = UIImage(data: data!)
-    }
-    task.resume()
+    
+    sem2.wait()
+    print("✅...............Tabelle erhalten")
     return antwort!
 }
