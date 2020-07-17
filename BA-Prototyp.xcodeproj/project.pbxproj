@@ -10,6 +10,7 @@
 		AA6309F824C0A17100C47C2D /* Debug View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6309F724C0A17100C47C2D /* Debug View.swift */; };
 		AA9D90C424C04F3400CAC732 /* Connect to API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D90C324C04F3400CAC732 /* Connect to API.swift */; };
 		AAB61DBE24C0F59400EB015B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AAB61DBD24C0F59400EB015B /* Alamofire */; };
+		AAB61DC024C1AC6B00EB015B /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB61DBF24C1AC6A00EB015B /* Launch.storyboard */; };
 		AAD33D4824B71BB200739A95 /* BA_PrototypApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D4724B71BB200739A95 /* BA_PrototypApp.swift */; };
 		AAD33D4A24B71BB200739A95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D4924B71BB200739A95 /* ContentView.swift */; };
 		AAD33D4C24B71BB500739A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD33D4B24B71BB500739A95 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		AA6309F724C0A17100C47C2D /* Debug View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug View.swift"; sourceTree = "<group>"; };
 		AA9D90C324C04F3400CAC732 /* Connect to API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Connect to API.swift"; sourceTree = "<group>"; };
+		AAB61DBF24C1AC6A00EB015B /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		AAD33D4424B71BB200739A95 /* BA-Prototyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BA-Prototyp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD33D4724B71BB200739A95 /* BA_PrototypApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA_PrototypApp.swift; sourceTree = "<group>"; };
 		AAD33D4924B71BB200739A95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				AAD33D8A24B8650900739A95 /* Camera View.swift */,
 				AA6309F724C0A17100C47C2D /* Debug View.swift */,
+				AAB61DBF24C1AC6A00EB015B /* Launch.storyboard */,
 			);
 			path = "1. Views";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = AAD33D3B24B71BB200739A95;
 			packageReferences = (
@@ -305,6 +309,7 @@
 			files = (
 				AAD33D4F24B71BB500739A95 /* Preview Assets.xcassets in Resources */,
 				AAD33D4C24B71BB500739A95 /* Assets.xcassets in Resources */,
+				AAB61DC024C1AC6B00EB015B /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
