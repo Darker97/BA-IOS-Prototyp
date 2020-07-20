@@ -15,25 +15,28 @@ import Vision
     Output:     Koordinaten Object (x,y,w,h)
  */
 
-func FindWords(image: UIImage) -> [String]{
-    var Ziel_text: [String] = []
+func FindWords(image: UIImage) -> [Zelle]{
+    var Ziel_Array: [Zelle] = []
     
     let requestHandler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
-          let request = VNRecognizeTextRequest { (request, error) in
-          guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
-          for currentObservation in observations {
-            let topCandidate = currentObservation.topCandidates(1)
-            for i in topCandidate{
-                Ziel_text.append(i.string)
+      let request = VNRecognizeTextRequest { (request, error) in
+        guard let results = request.results as? [VNRecognizedTextObservation] else { return }
+        for i in results{
+            var temp = i.boundingBox
+            let topcandidate = i.topCandidates(1)
+            var tempText: String = ""
+            for p in topcandidate{
+                tempText = p.string
             }
-          }
+            var neueZelle = Zelle(Inhalt: tempText, x: Float(temp.origin.x), y:Float(temp.origin.y), width: Float(temp.width), height:Float(temp.height))
+            Ziel_Array.append(neueZelle)
+        }
       }
-          
     request.recognitionLevel = .accurate
     request.usesLanguageCorrection = true
     try? requestHandler.perform([request])
     
-    return Ziel_text
+    return Ziel_Array
 }
 
 
@@ -46,7 +49,6 @@ func PlotWords(image: UIImage) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(image.size, false, 1.0)
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         for i in results{
-            
             
             var rect = i.boundingBox
             

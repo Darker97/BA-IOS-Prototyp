@@ -12,3 +12,4 @@ import Foundation
     Input:      Array aus Inhalts Objecten
     Output:     Array aus Inhalts Objecten
  */
+
