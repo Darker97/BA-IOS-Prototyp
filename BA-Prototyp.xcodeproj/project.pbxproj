@@ -11,7 +11,7 @@
 		AA7A342A24C58F4E00380A70 /* Front.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A342924C58F4D00380A70 /* Front.swift */; };
 		AA7A342C24C58F5800380A70 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A342B24C58F5800380A70 /* Struct.swift */; };
 		AA9D90C424C04F3400CAC732 /* Connect to API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D90C324C04F3400CAC732 /* Connect to API.swift */; };
-		AAB61DBE24C0F59400EB015B /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AAB61DBD24C0F59400EB015B /* SwiftPackageProductDependency */; };
+		AAB61DBE24C0F59400EB015B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AAB61DBD24C0F59400EB015B /* Alamofire */; };
 		AAB61DC024C1AC6B00EB015B /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB61DBF24C1AC6A00EB015B /* Launch.storyboard */; };
 		AAD33D4824B71BB200739A95 /* BA_PrototypApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D4724B71BB200739A95 /* BA_PrototypApp.swift */; };
 		AAD33D4A24B71BB200739A95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD33D4924B71BB200739A95 /* ContentView.swift */; };
@@ -78,6 +78,7 @@
 		AAD33D8824B864B200739A95 /* CameraKontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKontroller.swift; sourceTree = "<group>"; };
 		AAD33D8A24B8650900739A95 /* Camera View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Camera View.swift"; sourceTree = "<group>"; };
 		AAE3F31524C5C6560028AD19 /* Vorbereitung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vorbereitung.swift; sourceTree = "<group>"; };
+		AAE6FEFB24C6DD6700620EF1 /* model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.tflite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB61DBE24C0F59400EB015B /* BuildFile in Frameworks */,
+				AAB61DBE24C0F59400EB015B /* Alamofire in Frameworks */,
 				FB4D5BD404E67F57107B00EF /* libPods-BA-Prototyp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +119,7 @@
 		AA7A342824C58F1E00380A70 /* 4-Logic */ = {
 			isa = PBXGroup;
 			children = (
+				AAE6FEFB24C6DD6700620EF1 /* model.tflite */,
 				AA7A342924C58F4D00380A70 /* Front.swift */,
 				AA7A342B24C58F5800380A70 /* Struct.swift */,
 			);
@@ -227,7 +229,6 @@
 				89721EF22B445A44E2B45144 /* Pods-BA-Prototyp.debug.xcconfig */,
 				3E3848B0B3801CED8F7848F6 /* Pods-BA-Prototyp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -249,7 +250,7 @@
 			);
 			name = "BA-Prototyp";
 			packageProductDependencies = (
-				AAB61DBD24C0F59400EB015B /* SwiftPackageProductDependency */,
+				AAB61DBD24C0F59400EB015B /* Alamofire */,
 			);
 			productName = "BA-Prototyp";
 			productReference = AAD33D4424B71BB200739A95 /* BA-Prototyp.app */;
@@ -324,7 +325,7 @@
 			);
 			mainGroup = AAD33D3B24B71BB200739A95;
 			packageReferences = (
-				AAB61DBC24C0F59400EB015B /* RemoteSwiftPackageReference */,
+				AAB61DBC24C0F59400EB015B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AAD33D4524B71BB200739A95 /* Products */;
 			projectDirPath = "";
@@ -740,7 +741,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AAB61DBC24C0F59400EB015B /* RemoteSwiftPackageReference */ = {
+		AAB61DBC24C0F59400EB015B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -751,9 +752,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AAB61DBD24C0F59400EB015B /* SwiftPackageProductDependency */ = {
+		AAB61DBD24C0F59400EB015B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AAB61DBC24C0F59400EB015B /* RemoteSwiftPackageReference */;
+			package = AAB61DBC24C0F59400EB015B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

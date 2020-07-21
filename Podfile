@@ -4,5 +4,6 @@
 target 'BA-Prototyp' do
   # Comment the next line if you don't want to use dynamic frameworks
   # Pods for BA-Prototyp
+	pod 'TensorFlowLiteSwift'
 
 end

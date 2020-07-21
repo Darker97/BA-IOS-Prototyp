@@ -1,3 +1,20 @@
-PODFILE CHECKSUM: 2797fd2badcc1cffdc5c17d6fa48fe9c191991e7
+PODS:
+  - TensorFlowLiteC (2.2.0)
+  - TensorFlowLiteSwift (2.2.0):
+    - TensorFlowLiteC (= 2.2.0)
+
+DEPENDENCIES:
+  - TensorFlowLiteSwift
+
+SPEC REPOS:
+  trunk:
+    - TensorFlowLiteC
+    - TensorFlowLiteSwift
+
+SPEC CHECKSUMS:
+  TensorFlowLiteC: b3ab9e867b0b71052ca102a32a786555b330b02e
+  TensorFlowLiteSwift: 2dd5e9c895e1819501f0fba3d8b69a536bda6c65
+
+PODFILE CHECKSUM: fe3300f9d6b9db4258478d63f680fcc8073dd296
 
 COCOAPODS: 1.10.0.beta.1

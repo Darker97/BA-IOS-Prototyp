@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import TensorFlowLite
+import Alamofire
 
 struct BoundingBox{
     var x: Float
@@ -74,5 +76,25 @@ func sortArray(Zellen: [Zelle])->[Zelle]{
 }
 
 func findKat(Inhalt: String)->Int{
-    return 0 
+    var Antwort = ""
+    var url = "http://192.168.178.34:5000/TensorKlassifier/"
+    //url += "?inhalt=" + Inhalt
+
+    let parameters = [
+        "inhalt": Inhalt
+    ] as HTTPHeaders?
+
+    
+    /*
+    AF.request(url, method: .get, encoding: URLEncoding.default, headers: parameters).responseJSON { response in
+        switch response.result {
+        case .success:
+            Antwort = response.value as? String ?? "7"
+        case .failure(let error):
+            print(error)
+        }
+    }
+    */
+    //return Int(Antwort) ?? 7
+    return 7
 }

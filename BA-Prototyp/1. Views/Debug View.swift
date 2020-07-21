@@ -108,7 +108,7 @@ struct Debug_View: View {
                         
                         Fortschritt = 1.0
                         Inhalt.append(BA_Prototyp.Fortschritt(Inhalt: "✅  --- Tabelle wurde erstellt"))
-                        sleep(2)
+                        sleep(1)
                         // Weiter zur Ausgabe
                         succcess = "true"
                     }

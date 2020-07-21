@@ -12,30 +12,28 @@ struct TabellenAnzeige:View{
     @State var NewTabelle: Tabelle
     
     var body: some View{
-        ScrollView(.horizontal) {
-            ScrollView{
-                HStack{
-                    ForEach(NewTabelle.Array){ i in
-                        Group{
-                            VStack{
-                                ForEach(i.Array){ cel in
-                                    NavigationLink(destination: DetailView(cell: cel)) {
-                                        Group{
-                                            Text(cel.Inhalt)
+                List{
+                    ScrollView(.horizontal){
+                        ForEach(NewTabelle.Array){ i in
+                                HStack{
+                                    ForEach(i.Array){ cel in
+                                        NavigationLink(destination: DetailView(cell: cel)) {
+                                            Group{
+                                                Text(cel.Inhalt)
+                                            }
+                                            .padding(.vertical, 10.0)
+                                            .frame(width: 100.0, height: 50.0)
+                                            .background(Color.green)
+                                            .foregroundColor(Color.white)
+                                            .cornerRadius(10)
                                         }
-                                        .padding(.vertical, 10.0)
-                                        .frame(width: 100.0, height: 50.0)
-                                        .background(Color.green)
-                                        .foregroundColor(Color.white)
-                                        .cornerRadius(10)
                                     }
                                 }
-                            }
                         }
                     }
                 }
-            }
-        }
+                .edgesIgnoringSafeArea([.leading, .trailing])
+                .padding(EdgeInsets(top: 0, leading: -10, bottom: 0, trailing: -10))
     }
 }
 
